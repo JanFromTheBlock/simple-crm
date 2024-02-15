@@ -13,11 +13,12 @@ import { Firestore, collectionData, docData, onSnapshot } from '@angular/fire/fi
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [MatIconModule, MatButtonModule, MatTooltipModule, MatDialogModule, MatNativeDateModule, MatCardModule, CommonModule],
+  imports: [MatIconModule, MatButtonModule, MatTooltipModule, MatDialogModule, MatNativeDateModule, MatCardModule, CommonModule, RouterLink],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })
