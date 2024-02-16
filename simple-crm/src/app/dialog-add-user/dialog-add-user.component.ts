@@ -42,7 +42,8 @@ export class DialogAddUserComponent {
     .then((result: any) => {
       this.loading = false;
       debugger
-      this.user['userId'] = result['_key']['path']['segments'][1];
+      this.user['userId'] = result.id
+      updateDoc(doc(this.firestore, 'users', this.user['userId']), this.user.toJSON());
       console.log(result);
       this.dialogRef.close();
     })
