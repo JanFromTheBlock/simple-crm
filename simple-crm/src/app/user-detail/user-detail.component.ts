@@ -27,9 +27,8 @@ export class UserDetailComponent {
   }
 
   getUser() {
-    debugger
     onSnapshot(doc(collection(this.firestore, 'users'), this.userIdfromUrl), (user: any) => {
-      this.user = new User(user);
+      this.user = new User(user.data());
       console.log('Retrieved User', this.user)
     })
   }
