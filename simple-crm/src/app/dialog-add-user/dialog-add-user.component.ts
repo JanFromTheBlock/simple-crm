@@ -15,12 +15,13 @@ import { Firestore, collectionData, docData } from '@angular/fire/firestore';
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MatButton } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-dialog-add-user',
   standalone: true,
-  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, FormsModule, MatProgressBarModule, CommonModule],
+  imports: [MatDialogModule, MatButton, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, FormsModule, MatProgressBarModule, CommonModule],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss',
 })

@@ -14,11 +14,12 @@ import { Firestore, collectionData, docData } from '@angular/fire/firestore';
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-dialog-edit-user',
   standalone: true,
-  imports: [MatProgressBarModule, MatProgressBar, MatDialogModule, FormsModule, MatInputModule, MatFormField, MatDatepickerModule, MatNativeDateModule, CommonModule, ],
+  imports: [MatProgressBarModule, MatButton, MatProgressBar, MatDialogModule, FormsModule, MatInputModule, MatFormField, MatDatepickerModule, MatNativeDateModule, CommonModule, ],
   templateUrl: './dialog-edit-user.component.html',
   styleUrl: './dialog-edit-user.component.scss'
 })
@@ -34,6 +35,10 @@ export class DialogEditUserComponent {
   }
 
   saveUser() {
-
+    updateDoc(doc(this.firestore, 'users', this.user['userId']), this.user.toJSON())
+    .then(() => {
+      this.loading = false;
+      this.dialogRef.close();
+    })
   }
 }

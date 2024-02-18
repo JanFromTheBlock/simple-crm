@@ -12,11 +12,12 @@ import { Firestore, collectionData, docData } from '@angular/fire/firestore';
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-dialog-edit-address',
   standalone: true,
-  imports: [MatProgressBar, MatDialogModule, MatFormField, MatInputModule, FormsModule, MatProgressBarModule, CommonModule],
+  imports: [MatProgressBar, MatButton, MatButtonModule, MatDialogModule, MatFormField, MatInputModule, FormsModule, MatProgressBarModule, CommonModule],
   templateUrl: './dialog-edit-address.component.html',
   styleUrl: './dialog-edit-address.component.scss'
 })
@@ -32,6 +33,10 @@ export class DialogEditAddressComponent {
   }
 
   saveUser(){
-    
+    updateDoc(doc(this.firestore, 'users', this.user['userId']), this.user.toJSON())
+    .then(() => {
+      this.loading = false;
+      this.dialogRef.close();
+    })
   }
 }

@@ -46,6 +46,7 @@ export class UserDetailComponent {
 
   editMenu(){
    const dialog =  this.dialog.open(DialogEditAddressComponent);
+   dialog.componentInstance.user = new User(this.user.toJSON());
    dialog.componentInstance.userId = this.userIdfromUrl;
   }
 }
