@@ -7,6 +7,12 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+import { CollectionReference, DocumentData, addDoc, collection, deleteDoc, doc, updateDoc, } from '@firebase/firestore';
+import { Firestore, collectionData, docData } from '@angular/fire/firestore';
+
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-dialog-edit-address',
   standalone: true,
@@ -18,9 +24,10 @@ export class DialogEditAddressComponent {
 
   user: User | any;
   loading = false;
+  userId: string | undefined;
 
 
-  constructor(public dialogRef: MatDialogRef<DialogEditAddressComponent>,public dialog: MatDialog,){
+  constructor(public dialogRef: MatDialogRef<DialogEditAddressComponent>,public dialog: MatDialog, private readonly firestore: Firestore){
 
   }
 
